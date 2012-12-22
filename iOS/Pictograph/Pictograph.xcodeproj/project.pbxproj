@@ -136,7 +136,6 @@
 		5003981A168593650009141E = {
 			isa = PBXGroup;
 			children = (
-				50F05AC61686209400401314 /* MobileCoreServices.framework */,
 				5003982F168593650009141E /* Pictograph */,
 				50039828168593650009141E /* Frameworks */,
 				50039826168593650009141E /* Products */,
@@ -181,6 +180,7 @@
 				50039837168593650009141E /* Pictograph-Prefix.pch */,
 				50F05AC41686206C00401314 /* Foundation.framework */,
 				50F05AC21686205B00401314 /* UIKit.framework */,
+				50F05AC61686209400401314 /* MobileCoreServices.framework */,
 				50F05AC01686205400401314 /* AudioToolbox.framework */,
 				50F05ABE1686204B00401314 /* AVFoundation.framework */,
 				50F05ABC1686204200401314 /* CFNetwork.framework */,
@@ -416,7 +416,10 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ARCHS = armv7;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Libraries\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Pictograph/Pictograph-Prefix.pch";
 				HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Libraries/LayarPlayer/${BUILD_STYLE}-${PLATFORM_NAME}/include\"";
@@ -465,7 +468,10 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ARCHS = armv7;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Libraries\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Pictograph/Pictograph-Prefix.pch";
 				HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Libraries/LayarPlayer/${BUILD_STYLE}-${PLATFORM_NAME}/include\"";
