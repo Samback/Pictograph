@@ -13,8 +13,10 @@
 #import <MobileCoreServices/UTCoreTypes.h>
 #import "AFNetworking/AFHTTPClient.h"
 #import "AFNetworking/AFHTTPRequestOperation.h"
+#import "Vkontakte/Vkontakte.h"
+#import "NSString+Gender.h"
 
-@interface ARViewController ()<LayarPlayerDelegate, UITextViewDelegate, UITextFieldDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface ARViewController ()<LayarPlayerDelegate, UITextViewDelegate, UITextFieldDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, VkontakteDelegate, VkontakteViewControllerDelegate, UIAlertViewDelegate, MBProgressHUDDelegate>
 @property (strong, nonatomic) IBOutlet UIButton *openReality;
 @property (strong, nonatomic) IBOutlet UIButton *photoButton;
 @property (strong, nonatomic) IBOutlet UITextView *messageView;
@@ -25,13 +27,19 @@
 @property (strong, nonatomic) IBOutlet UIImageView *currentImage;
 @property (nonatomic) BOOL isAddPhoto;
 @property (strong, nonatomic) IBOutlet UILabel *greetingsLabel;
+@property (nonatomic, strong) Vkontakte *vkontakte;
+@property (nonatomic, strong) NSDictionary *userInfo;
+@property (nonatomic, strong) UIAlertView *alert;
+@property (nonatomic, strong) MBProgressHUD *hud;
 
 - (void)initLayar;
 - (void)initPicker;
 - (void)initActionSheet;
+- (void)initVkontakte;
 - (void)openAlbum;
 - (BOOL)isDataCorrect;
 - (void)sendGreetingsRequest;
+- (void)postToVKWall;
 
 @end
 
@@ -46,6 +54,9 @@
 @synthesize currentImage = _currentImage;
 @synthesize isAddPhoto = _isAddPhoto;
 @synthesize greetingsLabel = _greetingsLabel;
+@synthesize userInfo = _userInfo;
+@synthesize alert = _alert;
+@synthesize hud = _hud;
 
 - (void)viewDidLoad
 {
@@ -71,6 +82,12 @@
     [self initLayar];
     [self initPicker];
     [self initActionSheet];
+    [self initVkontakte];
+    _alert = [[UIAlertView alloc] initWithTitle:APP_NAME message:VK_MESSAGE delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+    self.hud =  [[MBProgressHUD alloc] initWithView:self.view];
+    [self.view addSubview:_hud];
+	_hud.dimBackground = YES;
+    _hud.delegate = self;
 }
 - (void)didReceiveMemoryWarning
 {
@@ -83,7 +100,8 @@
 }
 
 - (IBAction)playClick:(UIButton *)sender {
-    [_messageView resignFirstResponder];    
+    [_messageView resignFirstResponder];
+    [self initLayar];
     [self presentModalViewController:_layarController animated:YES];
 }
 
@@ -105,6 +123,20 @@
     [DELEGATE startUpdatePosition];
     [_messageView resignFirstResponder];
     [_actionSheet showInView:self.view];
+}
+
+#pragma mark - UIAction Delegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (alertView.cancelButtonIndex == buttonIndex) {
+        return;
+    }
+    [_vkontakte authenticate];
+}
+
+#pragma mark -Vkontakte Delegate methods
+- (void)initVkontakte{
+    _vkontakte = [Vkontakte sharedInstance];
+    _vkontakte.delegate = self;
 }
 
 #pragma mark - Getting photos
@@ -143,8 +175,9 @@
         //        // Save the new image (original or edited) to the Camera Roll
         if (_pickerController.sourceType == UIImagePickerControllerSourceTypeCamera) {
           UIImageWriteToSavedPhotosAlbum (imageToSave, nil, nil , nil);  
-        }        
+        }
         self.currentImage.image = imageToSave;
+        [self.currentImage reloadInputViews];
     }
     
     // Handle a movie capture
@@ -230,7 +263,12 @@ shouldChangeTextInRange:(NSRange)range
 #pragma mark - Send request method
 - (IBAction)sendRequests:(UIButton *)sender {    
     if ([self isDataCorrect]) {
-        [self sendGreetingsRequest];
+        if ([_vkontakte isAuthorized]){
+             [self postToVKWall];
+        }
+        else{
+            [_alert show];
+        }
     }
     else{
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:APP_NAME message:NOT_ALL_DATA_ADDED delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
@@ -246,14 +284,26 @@ shouldChangeTextInRange:(NSRange)range
 }
 
 - (void)sendGreetingsRequest{
+    [_hud show:YES];
     NSData *imageToUpload = UIImageJPEGRepresentation(_currentImage.image, 90);
     AFHTTPClient *client= [AFHTTPClient clientWithBaseURL:[NSURL URLWithString:BASE_URL]];    
      CLLocationCoordinate2D loc = DELEGATE.getCurrentLocation.coordinate;
+    
+    NSString *photoUrl = [_userInfo objectForKey:@"photo_big"];
+     NSString *userName = [NSString stringWithFormat:@"%@ %@", [_userInfo objectForKey:@"first_name"],  [_userInfo objectForKey:@"last_name"]];
+    NSString *userBDate = [_userInfo objectForKey:@"bdate"];
+    NSString *userGender = [NSString stringWithGenderId:[[_userInfo objectForKey:@"sex"] intValue]];
+    NSString *userEmail = [_userInfo objectForKey:@"email"];
+    
     NSDictionary *paramaters = [NSDictionary dictionaryWithObjectsAndKeys:
                                 [NSString stringWithFormat:@"%f", loc.latitude], @"lat",
                                 [NSString stringWithFormat:@"%f", loc.longitude], @"lng",
                                 _messageView.text, @"message",
-                                @"Max", @"author",
+                                userName, @"author",
+                                userBDate, @"birthday",
+                                userGender, @"sex",
+                                userEmail, @"email",
+                                photoUrl, @"userImage",
                                 [Settings setMUUID], @"deviceId",
                                 nil];
     NSLog(@"P{arams %@", paramaters);
@@ -266,6 +316,9 @@ shouldChangeTextInRange:(NSRange)range
     
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSString *response = [operation responseString];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [_hud hide:YES];
+        });
         if ([response integerValue] == 200) {
             [self cleareData];
         }
@@ -286,6 +339,58 @@ shouldChangeTextInRange:(NSRange)range
 - (void)cleareData{
     self.currentImage.image = DEFAULT_IMAGE;
     self.messageView.text = @"";
+}
+
+
+#pragma mark - VKONTAKTE DELEGATE METHODS
+- (void)vkontakteDidFailedWithError:(NSError *)error
+{
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+- (void)showVkontakteAuthController:(UIViewController *)controller
+{
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+    {
+        controller.modalPresentationStyle = UIModalPresentationFormSheet;
+    }
+    
+    [self presentModalViewController:controller animated:YES];
+}
+
+- (void)vkontakteAuthControllerDidCancelled
+{
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+- (void)vkontakteDidFinishLogin:(Vkontakte *)vkontakte
+{
+    [self dismissModalViewControllerAnimated:YES];
+    [_vkontakte getUserInfo];
+    [self postToVKWall];
+  //  [self refreshButtonState];
+}
+
+- (void)vkontakteDidFinishLogOut:(Vkontakte *)vkontakte
+{
+   // [self refreshButtonState];
+}
+
+- (void)vkontakteDidFinishGettinUserInfo:(NSDictionary *)info
+{
+    self.userInfo = info;
+}
+
+- (void)vkontakteDidFinishPostingToWall:(NSDictionary *)responce
+{
+    NSLog(@"%@", responce);
+    [self sendGreetingsRequest];    
+}
+
+- (void)postToVKWall{
+    [_vkontakte postImageToWall:_currentImage.image
+                           text:_messageView.text
+                           link:[NSURL URLWithString:BASE_URL]];
 }
 
 @end

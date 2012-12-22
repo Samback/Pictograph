@@ -6,6 +6,7 @@
 #define PHOTO_LIBRARY_BUTTON_TITLE @"Photo Library"
 #define APP_NAME @"Pictograph"
 #define NOT_ALL_DATA_ADDED @"Please make sure that you add photo and message to your greetings"
+#define VK_MESSAGE @"To add post at location you should be login via VK"
 
 #define GREETINGS_BUTTON_TITLE @"Send greetings"
 #define REALITY_BUTTON_TITLE @"Open reality"

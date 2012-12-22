@@ -44,6 +44,11 @@
 		50F05AC31686205B00401314 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50F05AC21686205B00401314 /* UIKit.framework */; };
 		50F05AC51686206C00401314 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50F05AC41686206C00401314 /* Foundation.framework */; };
 		50F05AC71686209400401314 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50F05AC61686209400401314 /* MobileCoreServices.framework */; };
+		50F05AF31686341900401314 /* NSString+Gender.m in Sources */ = {isa = PBXBuildFile; fileRef = 50F05AED1686341900401314 /* NSString+Gender.m */; };
+		50F05AF41686341900401314 /* Vkontakte.m in Sources */ = {isa = PBXBuildFile; fileRef = 50F05AEF1686341900401314 /* Vkontakte.m */; };
+		50F05AF51686341900401314 /* VkontakteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50F05AF11686341900401314 /* VkontakteViewController.m */; };
+		50F05AF8168636A300401314 /* MBProgressHUD.h in Sources */ = {isa = PBXBuildFile; fileRef = 50F05AE6168633E100401314 /* MBProgressHUD.h */; };
+		50F05AF9168636A300401314 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 50F05AE7168633E100401314 /* MBProgressHUD.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -101,6 +106,14 @@
 		50F05AC21686205B00401314 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		50F05AC41686206C00401314 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		50F05AC61686209400401314 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		50F05AE6168633E100401314 /* MBProgressHUD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = MBProgressHud/MBProgressHUD.h; sourceTree = "<group>"; };
+		50F05AE7168633E100401314 /* MBProgressHUD.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = MBProgressHud/MBProgressHUD.m; sourceTree = "<group>"; };
+		50F05AEC1686341900401314 /* NSString+Gender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Gender.h"; sourceTree = "<group>"; };
+		50F05AED1686341900401314 /* NSString+Gender.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Gender.m"; sourceTree = "<group>"; };
+		50F05AEE1686341900401314 /* Vkontakte.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vkontakte.h; sourceTree = "<group>"; };
+		50F05AEF1686341900401314 /* Vkontakte.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vkontakte.m; sourceTree = "<group>"; };
+		50F05AF01686341900401314 /* VkontakteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VkontakteViewController.h; sourceTree = "<group>"; };
+		50F05AF11686341900401314 /* VkontakteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VkontakteViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,6 +217,8 @@
 		504022481685D8B800992455 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				50F05AE6168633E100401314 /* MBProgressHUD.h */,
+				50F05AE7168633E100401314 /* MBProgressHUD.m */,
 				50039838168593650009141E /* ARAppDelegate.hpp */,
 				50039839168593650009141E /* ARAppDelegate.mm */,
 				5003983E168593650009141E /* ARViewController.hpp */,
@@ -215,6 +230,7 @@
 		5040224A1685D8D500992455 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				50F05AEB1686341900401314 /* Vkontakte */,
 				5040224B1685D8FA00992455 /* Definitions.h */,
 				5040228A1686049500992455 /* Settings.h */,
 				5040228B1686049500992455 /* Settings.m */,
@@ -255,6 +271,19 @@
 				5040228E16860C2B00992455 /* default_image@2x.png */,
 			);
 			name = Images;
+			sourceTree = "<group>";
+		};
+		50F05AEB1686341900401314 /* Vkontakte */ = {
+			isa = PBXGroup;
+			children = (
+				50F05AEC1686341900401314 /* NSString+Gender.h */,
+				50F05AED1686341900401314 /* NSString+Gender.m */,
+				50F05AEE1686341900401314 /* Vkontakte.h */,
+				50F05AEF1686341900401314 /* Vkontakte.m */,
+				50F05AF01686341900401314 /* VkontakteViewController.h */,
+				50F05AF11686341900401314 /* VkontakteViewController.m */,
+			);
+			path = Vkontakte;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -324,6 +353,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50F05AF8168636A300401314 /* MBProgressHUD.h in Sources */,
+				50F05AF9168636A300401314 /* MBProgressHUD.m in Sources */,
 				50039836168593650009141E /* main.mm in Sources */,
 				5003983A168593650009141E /* ARAppDelegate.mm in Sources */,
 				50039840168593650009141E /* ARViewController.mm in Sources */,
@@ -337,6 +368,9 @@
 				504022691685F8C600992455 /* AFXMLRequestOperation.m in Sources */,
 				5040226A1685F8C600992455 /* UIImageView+AFNetworking.m in Sources */,
 				5040228C1686049500992455 /* Settings.m in Sources */,
+				50F05AF31686341900401314 /* NSString+Gender.m in Sources */,
+				50F05AF41686341900401314 /* Vkontakte.m in Sources */,
+				50F05AF51686341900401314 /* VkontakteViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
