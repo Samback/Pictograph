@@ -445,4 +445,98 @@ shouldChangeTextInRange:(NSRange)range
                            link:[NSURL URLWithString:BASE_URL]];
 }
 
+
+//Feature post on wall dont post on wall
+
+//Twitter Account implementation geted from http://eflorenzano.com/blog/2012/04/18/using-twitter-ios5-integration-single-sign-on/
+//ACAccountStore *store = [[ACAccountStore alloc] init]; // Long-lived
+//ACAccountType *twitterType = [store accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
+//[store requestAccessToAccountsWithType:twitterType withCompletionHandler:^(BOOL granted, NSError *error) {
+//    if(granted) {
+//        NSArray *twitterAccounts = [store accountsWithAccountType:twitterType];
+//        
+//        // If there are no accounts, we need to pop up an alert
+//        if(twitterAccounts != nil && [twitterAccounts count] > 1) {
+//            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Twitter Accounts"
+//                                                            message:@"There are no Twitter accounts configured. You can add or create a Twitter account in Settings."
+//                                                           delegate:nil
+//                                                  cancelButtonTitle:@"OK"
+//                                                  otherButtonTitles:nil];
+//            [alert show];
+//        } else {
+//            ACAccount *account = [twitterAccounts objectAtIndex:0];
+//            NSURL *url = [NSURL URLWithString:@"http://api.twitter.com/1/account/verify_credentials.json"];
+//            TWRequest *req = [[TWRequest alloc] initWithURL:url
+//                                                 parameters:nil
+//                                              requestMethod:TWRequestMethodGET];
+//            
+//            // Important: attach the user's Twitter ACAccount object to the request
+//            req.account = account;
+//            
+//            [req performRequestWithHandler:^(NSData *responseData,
+//                                             NSHTTPURLResponse *urlResponse,
+//                                             NSError *error) {
+//                
+//                // If there was an error making the request, display a message to the user
+//                if(error != nil) {
+//                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Twitter Error"
+//                                                                    message:@"There was an error talking to Twitter. Please try again later."
+//                                                                   delegate:nil
+//                                                          cancelButtonTitle:@"OK"
+//                                                          otherButtonTitles:nil];
+//                    [alert show];
+//                    return;
+//                }
+//                
+//                // Parse the JSON response
+//                NSError *jsonError = nil;
+//                id resp = [NSJSONSerialization JSONObjectWithData:responseData
+//                                                          options:0
+//                                                            error:&jsonError];
+//                
+//                // If there was an error decoding the JSON, display a message to the user
+//                if(jsonError != nil) {
+//                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Twitter Error"
+//                                                                    message:@"Twitter is not acting properly right now. Please try again later."
+//                                                                   delegate:nil
+//                                                          cancelButtonTitle:@"OK"
+//                                                          otherButtonTitles:nil];
+//                    [alert show];
+//                    return;
+//                }
+//                
+//                NSString *screenName = [resp objectForKey:@"screen_name"];
+//                NSString *fullName = [resp objectForKey:@"name"];
+//                NSString *location = [resp objectForKey:@"location"];
+//                NSLog(@"Geted Data %@ %@ %@", screenName, fullName, location);
+//                
+//                // Make sure to perform our operation back on the main thread
+//                dispatch_async(dispatch_get_main_queue(), ^{
+//                    // Do something with the fetched data
+//                });
+//            }];            }
+//    }
+//    // Handle any error state here as you wish
+//}];
+
+//post image
+
+//TWRequest *postRequest = [[TWRequest alloc] initWithURL:[NSURL URLWithString:@"https://upload.twitter.com/1/statuses/update_with_media.json"] parameters:nil requestMethod:TWRequestMethodPOST];
+//
+//UIImage * image = [UIImage imageNamed:@"myImage.png"];
+//
+////add text
+//[postRequest addMultiPartData:[@"I just found the secret level!" dataUsingEncoding:NSUTF8StringEncoding] withName:@"status" type:@"multipart/form-data"];
+////add image
+//[postRequest addMultiPartData:UIImagePNGRepresentation(image) withName:@"media" type:@"multipart/form-data"];
+//
+//// Set the account used to post the tweet.
+//[postRequest setAccount:twitterAccount];
+//
+//// Perform the request created above and create a handler block to handle the response.
+//[postRequest performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
+//    NSString *output = [NSString stringWithFormat:@"HTTP response status: %i", [urlResponse statusCode]];
+//    [self performSelectorOnMainThread:@selector(displayText:) withObject:output waitUntilDone:NO];
+//}];
+
 @end
