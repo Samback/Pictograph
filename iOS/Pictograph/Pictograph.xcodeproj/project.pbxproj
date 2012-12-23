@@ -13,6 +13,17 @@
 		5003983D168593650009141E /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5003983B168593650009141E /* MainStoryboard.storyboard */; };
 		50039840168593650009141E /* ARViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5003983F168593650009141E /* ARViewController.mm */; };
 		50039865168596070009141E /* PlayerLocalization.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 50039864168596070009141E /* PlayerLocalization.bundle */; };
+		5021A89C1686FB170068BCC4 /* help.png in Resources */ = {isa = PBXBuildFile; fileRef = 5021A8961686FB170068BCC4 /* help.png */; };
+		5021A89D1686FB170068BCC4 /* help@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5021A8971686FB170068BCC4 /* help@2x.png */; };
+		5021A89E1686FB170068BCC4 /* info.png in Resources */ = {isa = PBXBuildFile; fileRef = 5021A8981686FB170068BCC4 /* info.png */; };
+		5021A89F1686FB170068BCC4 /* info@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5021A8991686FB170068BCC4 /* info@2x.png */; };
+		5021A8A01686FB170068BCC4 /* santa.png in Resources */ = {isa = PBXBuildFile; fileRef = 5021A89A1686FB170068BCC4 /* santa.png */; };
+		5021A8A11686FB170068BCC4 /* santa@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5021A89B1686FB170068BCC4 /* santa@2x.png */; };
+		5021A8A61686FB3A0068BCC4 /* accept.png in Resources */ = {isa = PBXBuildFile; fileRef = 5021A8A21686FB3A0068BCC4 /* accept.png */; };
+		5021A8A71686FB3A0068BCC4 /* accept@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5021A8A31686FB3A0068BCC4 /* accept@2x.png */; };
+		5021A8A81686FB3A0068BCC4 /* alert.png in Resources */ = {isa = PBXBuildFile; fileRef = 5021A8A41686FB3A0068BCC4 /* alert.png */; };
+		5021A8A91686FB3A0068BCC4 /* alert@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5021A8A51686FB3A0068BCC4 /* alert@2x.png */; };
+		5021A8B01686FB960068BCC4 /* GRAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5021A8AF1686FB960068BCC4 /* GRAlertView.m */; };
 		504022621685F8C600992455 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 504022501685F8C600992455 /* AFHTTPClient.m */; };
 		504022631685F8C600992455 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 504022521685F8C600992455 /* AFHTTPRequestOperation.m */; };
 		504022641685F8C600992455 /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 504022541685F8C600992455 /* AFImageRequestOperation.m */; };
@@ -63,6 +74,18 @@
 		5003983E168593650009141E /* ARViewController.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ARViewController.hpp; sourceTree = "<group>"; };
 		5003983F168593650009141E /* ARViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ARViewController.mm; sourceTree = "<group>"; };
 		50039864168596070009141E /* PlayerLocalization.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PlayerLocalization.bundle; sourceTree = "<group>"; };
+		5021A8961686FB170068BCC4 /* help.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = help.png; path = Libraries/GRAlert/GRAlertView/help.png; sourceTree = SOURCE_ROOT; };
+		5021A8971686FB170068BCC4 /* help@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "help@2x.png"; path = "Libraries/GRAlert/GRAlertView/help@2x.png"; sourceTree = SOURCE_ROOT; };
+		5021A8981686FB170068BCC4 /* info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = info.png; path = Libraries/GRAlert/GRAlertView/info.png; sourceTree = SOURCE_ROOT; };
+		5021A8991686FB170068BCC4 /* info@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "info@2x.png"; path = "Libraries/GRAlert/GRAlertView/info@2x.png"; sourceTree = SOURCE_ROOT; };
+		5021A89A1686FB170068BCC4 /* santa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = santa.png; path = Libraries/GRAlert/GRAlertView/santa.png; sourceTree = SOURCE_ROOT; };
+		5021A89B1686FB170068BCC4 /* santa@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "santa@2x.png"; path = "Libraries/GRAlert/GRAlertView/santa@2x.png"; sourceTree = SOURCE_ROOT; };
+		5021A8A21686FB3A0068BCC4 /* accept.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = accept.png; path = Libraries/GRAlert/GRAlertView/accept.png; sourceTree = SOURCE_ROOT; };
+		5021A8A31686FB3A0068BCC4 /* accept@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "accept@2x.png"; path = "Libraries/GRAlert/GRAlertView/accept@2x.png"; sourceTree = SOURCE_ROOT; };
+		5021A8A41686FB3A0068BCC4 /* alert.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = alert.png; path = Libraries/GRAlert/GRAlertView/alert.png; sourceTree = SOURCE_ROOT; };
+		5021A8A51686FB3A0068BCC4 /* alert@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "alert@2x.png"; path = "Libraries/GRAlert/GRAlertView/alert@2x.png"; sourceTree = SOURCE_ROOT; };
+		5021A8AE1686FB960068BCC4 /* GRAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GRAlertView.h; path = Libraries/GRAlert/GRAlertView.h; sourceTree = SOURCE_ROOT; };
+		5021A8AF1686FB960068BCC4 /* GRAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GRAlertView.m; path = Libraries/GRAlert/GRAlertView.m; sourceTree = SOURCE_ROOT; };
 		5040224B1685D8FA00992455 /* Definitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Definitions.h; path = Helpers/Definitions.h; sourceTree = "<group>"; };
 		5040224F1685F8C600992455 /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
 		504022501685F8C600992455 /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
@@ -214,6 +237,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		5021A8941686FAC90068BCC4 /* GRAlert */ = {
+			isa = PBXGroup;
+			children = (
+				5021A8AE1686FB960068BCC4 /* GRAlertView.h */,
+				5021A8AF1686FB960068BCC4 /* GRAlertView.m */,
+			);
+			name = GRAlert;
+			sourceTree = "<group>";
+		};
 		504022481685D8B800992455 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -230,6 +262,7 @@
 		5040224A1685D8D500992455 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				5021A8941686FAC90068BCC4 /* GRAlert */,
 				50F05AEB1686341900401314 /* Vkontakte */,
 				5040224B1685D8FA00992455 /* Definitions.h */,
 				5040228A1686049500992455 /* Settings.h */,
@@ -267,6 +300,16 @@
 		5040229116860C2E00992455 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				5021A8A21686FB3A0068BCC4 /* accept.png */,
+				5021A8A31686FB3A0068BCC4 /* accept@2x.png */,
+				5021A8A41686FB3A0068BCC4 /* alert.png */,
+				5021A8A51686FB3A0068BCC4 /* alert@2x.png */,
+				5021A8961686FB170068BCC4 /* help.png */,
+				5021A8971686FB170068BCC4 /* help@2x.png */,
+				5021A8981686FB170068BCC4 /* info.png */,
+				5021A8991686FB170068BCC4 /* info@2x.png */,
+				5021A89A1686FB170068BCC4 /* santa.png */,
+				5021A89B1686FB170068BCC4 /* santa@2x.png */,
 				5040228D16860C2A00992455 /* default_image.png */,
 				5040228E16860C2B00992455 /* default_image@2x.png */,
 			);
@@ -343,6 +386,16 @@
 				5003983D168593650009141E /* MainStoryboard.storyboard in Resources */,
 				5040228F16860C2B00992455 /* default_image.png in Resources */,
 				5040229016860C2B00992455 /* default_image@2x.png in Resources */,
+				5021A89C1686FB170068BCC4 /* help.png in Resources */,
+				5021A89D1686FB170068BCC4 /* help@2x.png in Resources */,
+				5021A89E1686FB170068BCC4 /* info.png in Resources */,
+				5021A89F1686FB170068BCC4 /* info@2x.png in Resources */,
+				5021A8A01686FB170068BCC4 /* santa.png in Resources */,
+				5021A8A11686FB170068BCC4 /* santa@2x.png in Resources */,
+				5021A8A61686FB3A0068BCC4 /* accept.png in Resources */,
+				5021A8A71686FB3A0068BCC4 /* accept@2x.png in Resources */,
+				5021A8A81686FB3A0068BCC4 /* alert.png in Resources */,
+				5021A8A91686FB3A0068BCC4 /* alert@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,6 +424,7 @@
 				50F05AF31686341900401314 /* NSString+Gender.m in Sources */,
 				50F05AF41686341900401314 /* Vkontakte.m in Sources */,
 				50F05AF51686341900401314 /* VkontakteViewController.m in Sources */,
+				5021A8B01686FB960068BCC4 /* GRAlertView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -13,5 +13,6 @@
     #import <Foundation/Foundation.h>
     #import"Definitions.h"
     #import "Settings.h"
-#import "MBProgressHUD.h"
+    #import "MBProgressHUD.h"
+    #import "GRAlertView.h"
 #endif

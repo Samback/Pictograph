@@ -29,7 +29,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *greetingsLabel;
 @property (nonatomic, strong) Vkontakte *vkontakte;
 @property (nonatomic, strong) NSDictionary *userInfo;
-@property (nonatomic, strong) UIAlertView *alert;
+@property (nonatomic, strong) GRAlertView *alert;
 @property (nonatomic, strong) MBProgressHUD *hud;
 
 - (void)initLayar;
@@ -83,7 +83,8 @@
     [self initPicker];
     [self initActionSheet];
     [self initVkontakte];
-    _alert = [[UIAlertView alloc] initWithTitle:APP_NAME message:VK_MESSAGE delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+    
+    
     self.hud =  [[MBProgressHUD alloc] initWithView:self.view];
     [self.view addSubview:_hud];
 	_hud.dimBackground = YES;
@@ -226,9 +227,14 @@
 
 #pragma mark - Init layar
 - (void)initLayar{
-    NSString *layerName = @"cherkassytest";//cherkasy2013
+    NSString *layerName = @"cherkassytest";//cherkasy2013///cherkassytest
     NSString *consumerKey = @"1234";//@"cherkasy2013";
     NSString *consumerSecret = @"4321";//@"2013cherkasy";
+    
+    
+//    NSString *layerName = @"cherkasy2013";//cherkasy2013
+//    NSString *consumerKey = @"cherkasy2013";//@"cherkasy2013";
+//    NSString *consumerSecret = @"2013cherkasy";//@"2013cherkasy";
     
     NSArray *oauthKeys = [NSArray arrayWithObjects:LPConsumerKeyParameterKey, LPConsumerSecretParameterKey, nil];
     NSArray *oauthValues = [NSArray arrayWithObjects:consumerKey, consumerSecret, nil];
@@ -267,11 +273,51 @@ shouldChangeTextInRange:(NSRange)range
              [self postToVKWall];
         }
         else{
+           _alert = [[GRAlertView alloc] initWithTitle:APP_NAME
+                                                message:VK_MESSAGE
+                                               delegate:self
+                                      cancelButtonTitle:@"Cancel"
+                                      otherButtonTitles:@"OK", nil];
+            
+//           /* [_alert setTopColor:[UIColor colorWithRed:0.7 green:0 blue:0 alpha:1]
+//                    middleColor:[UIColor colorWithRed:0.5 green:0 blue:0 alpha:1]
+//                    bottomColor:[UIColor colorWithRed:0.4 green:0 blue:0 alpha:1]
+//                      lineColor:[UIColor colorWithRed:0.7 green:0 blue:0 alpha:1]];
+//            */
+//            alert.style = GRAlertStyleAlert;            // set UIAlertView style
+//            alert.animation = GRAlertAnimationLines;
+//           /* [_alert setFontName:@"Cochin-BoldItalic"
+//                      fontColor:[UIColor greenColor]
+//                fontShadowColor:[UIColor colorWithRed:0.8 green:0 blue:0 alpha:1]];
+//            */
+//            
+//            [alert setImage:@"alert.png"];
+//            [alert show];
+            
+            _alert.style = GRAlertStyleInfo;            // set UIAlertView style
+            /*[_alert setTopColor:[UIColor colorWithRed:0.7 green:0 blue:0 alpha:1]
+                   middleColor:[UIColor colorWithRed:0.5 green:0 blue:0 alpha:1]
+                   bottomColor:[UIColor colorWithRed:0.4 green:0 blue:0 alpha:1]
+                     lineColor:[UIColor colorWithRed:0.7 green:0 blue:0 alpha:1]];
+             */
+            [_alert setFontName:@"Cochin-BoldItalic"
+                     fontColor:[UIColor greenColor]
+               fontShadowColor:[UIColor colorWithRed:0.8 green:0 blue:0 alpha:1]];
+            _alert.animation = GRAlertAnimationBorder;    // set animation type
+            [_alert setImage:@"santa.png"];              // add icon image
             [_alert show];
+
         }
     }
     else{
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:APP_NAME message:NOT_ALL_DATA_ADDED delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        GRAlertView *alert = [[GRAlertView alloc] initWithTitle:APP_NAME
+                                                        message:NOT_ALL_DATA_ADDED
+                                                       delegate:self
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles: nil];
+        alert.style = GRAlertStyleAlert;            // set UIAlertView style
+        alert.animation = GRAlertAnimationLines;    // set animation type
+        [alert setImage:@"alert.png"];              // add icon image
         [alert show];
     }   
 }
@@ -325,8 +371,14 @@ shouldChangeTextInRange:(NSRange)range
         NSLog(@"response: [%@]",response);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         if([operation.response statusCode] == 403){
-            NSLog(@"Upload Failed");
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:APP_NAME message:SERVER_NOT_AVAILABLE delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            GRAlertView *alert = [[GRAlertView alloc] initWithTitle:APP_NAME
+                                                            message:SERVER_NOT_AVAILABLE
+                                                           delegate:self
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles: nil];
+            alert.style = GRAlertStyleAlert;            // set UIAlertView style
+            alert.animation = GRAlertAnimationLines;    // set animation type
+            [alert setImage:@"alert.png"];              // add icon image
             [alert show];
             return;
         }
