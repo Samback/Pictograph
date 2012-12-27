@@ -14,10 +14,12 @@
 + (NSString *)systemName;
 + (NSString *)systemVersion;
 + (NSString *)setMUUID;
-+ (void)saveShareText:(NSString *)shareText;
 + (NSDictionary *)downloadedAction:(NSString *)editionId;
 + (NSString *)convertDateStringToPrettyForm:(NSString *)string;
 + (UIImage*)imageWithImage:(UIImage*)image scaledToSize:(CGSize)newSize;
 + (UIImage*)imageWithImage:(UIImage*)sourceImage scaledToSizeWithSameAspectRatio:(CGSize)targetSize;
 + (UIImage*)imageWithImage:(UIImage*)sourceImage scaledToSizeKeepingAspect:(CGSize)targetSize;
+
++ (void)saveValueForValue:(NSObject *)value withKey:(NSString *)key;
++ (NSObject *)valueForKey:(NSString *)key;
 @end

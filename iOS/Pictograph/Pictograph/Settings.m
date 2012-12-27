@@ -472,4 +472,17 @@
     return newImage; 
 }
 
+
++ (void)saveValueForValue:(NSObject *)value withKey:(NSString *)key{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:value forKey:key];
+    [defaults synchronize];
+}
+
++ (NSObject *)valueForKey:(NSString *)key{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    return [defaults objectForKey:key];
+}
+
+
 @end
