@@ -1,3 +1,6 @@
 [submodule "iOS/Pictograph/Libraries/GRAlert"]
 	path = iOS/Pictograph/Libraries/GRAlert
 	url = git://github.com/goncz9/GRAlertView.git
+[submodule "iOS/Pictograph/Libraries/GRButtons"]
+	path = iOS/Pictograph/Libraries/GRButtons
+	url = git://github.com/goncz9/GRButtons.git

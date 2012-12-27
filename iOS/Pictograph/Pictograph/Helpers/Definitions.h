@@ -6,7 +6,7 @@
 #define PHOTO_LIBRARY_BUTTON_TITLE @"Photo Library"
 #define APP_NAME @"Pictograph"
 #define NOT_ALL_DATA_ADDED @"Please make sure that you add photo and message to your greetings"
-#define VK_MESSAGE @"To add post at location you should be login via VK"
+#define VK_MESSAGE @"To add post at location you should be login via one of next social networks"
 
 #define GREETINGS_BUTTON_TITLE @"Send greetings"
 #define REALITY_BUTTON_TITLE @"Open reality"
@@ -17,6 +17,8 @@
 #define DEFAULT_IMAGE [UIImage imageNamed:@"default_image"]
 #define MUUID @"uuid"
 
+#define VK_POST_ON_WALL_KEY @"vk_post_on_wall"
+#define TWITTER_POST_ON_WALL_KEY @"twitter_post_on_wall"
 
 #define GREETINGS_LABEL_TITLE @"Add your greetings:"
 
