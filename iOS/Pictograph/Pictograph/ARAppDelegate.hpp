@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
+@class Vkontakte;
 
 @interface ARAppDelegate : UIResponder <UIApplicationDelegate>
-
+@property (nonatomic, strong) Vkontakte *vkontakte;
 @property (strong, nonatomic) UIWindow *window;
 - (void)startUpdatePosition;
 - (void)finishUpdatePosition;

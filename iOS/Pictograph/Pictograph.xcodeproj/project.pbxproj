@@ -38,6 +38,8 @@
 		5040229016860C2B00992455 /* default_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5040228E16860C2B00992455 /* default_image@2x.png */; };
 		505D29C01687A712008DB846 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 505D29BF1687A712008DB846 /* Accounts.framework */; };
 		505D29C31687A71B008DB846 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 505D29C21687A71B008DB846 /* Twitter.framework */; };
+		505D29FA168A3C6B008DB846 /* ARSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 505D29F9168A3C6B008DB846 /* ARSettingsController.m */; };
+		505D29FF168A434D008DB846 /* GRButtons.m in Sources */ = {isa = PBXBuildFile; fileRef = 505D29FE168A434D008DB846 /* GRButtons.m */; };
 		50F05AA216861FAD00401314 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50F05AA116861FAD00401314 /* Security.framework */; };
 		50F05AA416861FB800401314 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50F05AA316861FB800401314 /* CoreVideo.framework */; };
 		50F05AA816861FE600401314 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50F05AA716861FE600401314 /* CoreMedia.framework */; };
@@ -114,6 +116,10 @@
 		5040228E16860C2B00992455 /* default_image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "default_image@2x.png"; path = "Images/default_image@2x.png"; sourceTree = "<group>"; };
 		505D29BF1687A712008DB846 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		505D29C21687A71B008DB846 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
+		505D29F8168A3C6B008DB846 /* ARSettingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARSettingsController.h; sourceTree = "<group>"; };
+		505D29F9168A3C6B008DB846 /* ARSettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARSettingsController.m; sourceTree = "<group>"; };
+		505D29FD168A434D008DB846 /* GRButtons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GRButtons.h; path = Libraries/GRButtons/GRButtons.h; sourceTree = SOURCE_ROOT; };
+		505D29FE168A434D008DB846 /* GRButtons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GRButtons.m; path = Libraries/GRButtons/GRButtons.m; sourceTree = SOURCE_ROOT; };
 		50F05AA116861FAD00401314 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		50F05AA316861FB800401314 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		50F05AA516861FC000401314 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
@@ -263,6 +269,8 @@
 				50039839168593650009141E /* ARAppDelegate.mm */,
 				5003983E168593650009141E /* ARViewController.hpp */,
 				5003983F168593650009141E /* ARViewController.mm */,
+				505D29F8168A3C6B008DB846 /* ARSettingsController.h */,
+				505D29F9168A3C6B008DB846 /* ARSettingsController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -270,6 +278,7 @@
 		5040224A1685D8D500992455 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				505D29FC168A4326008DB846 /* GRButtons */,
 				5021A8941686FAC90068BCC4 /* GRAlert */,
 				50F05AEB1686341900401314 /* Vkontakte */,
 				5040224B1685D8FA00992455 /* Definitions.h */,
@@ -322,6 +331,15 @@
 				5040228E16860C2B00992455 /* default_image@2x.png */,
 			);
 			name = Images;
+			sourceTree = "<group>";
+		};
+		505D29FC168A4326008DB846 /* GRButtons */ = {
+			isa = PBXGroup;
+			children = (
+				505D29FD168A434D008DB846 /* GRButtons.h */,
+				505D29FE168A434D008DB846 /* GRButtons.m */,
+			);
+			name = GRButtons;
 			sourceTree = "<group>";
 		};
 		50F05AEB1686341900401314 /* Vkontakte */ = {
@@ -433,6 +451,8 @@
 				50F05AF41686341900401314 /* Vkontakte.m in Sources */,
 				50F05AF51686341900401314 /* VkontakteViewController.m in Sources */,
 				5021A8B01686FB960068BCC4 /* GRAlertView.m in Sources */,
+				505D29FA168A3C6B008DB846 /* ARSettingsController.m in Sources */,
+				505D29FF168A434D008DB846 /* GRButtons.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

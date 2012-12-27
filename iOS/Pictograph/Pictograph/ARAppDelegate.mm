@@ -7,6 +7,7 @@
 //
 
 #import "ARAppDelegate.hpp"
+#import "Vkontakte/Vkontakte.h"
 
 @interface ARAppDelegate()<CLLocationManagerDelegate>
 @property (nonatomic, strong) CLLocationManager *locationManager;
@@ -19,11 +20,12 @@
 @implementation ARAppDelegate
 @synthesize locationManager = _locationManager;
 @synthesize currentLocation = _currentLocation;
+@synthesize vkontakte = _vkontakte;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    
+    self.vkontakte =  [Vkontakte sharedInstance];
     [self initLocationManager];
     [Settings setMUUID];
     return YES;

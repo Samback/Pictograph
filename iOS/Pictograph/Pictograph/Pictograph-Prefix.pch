@@ -15,4 +15,5 @@
     #import "Settings.h"
     #import "MBProgressHUD.h"
     #import "GRAlertView.h"
+    #import "Vkontakte/Vkontakte.h"
 #endif

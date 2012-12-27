@@ -27,7 +27,6 @@
 @property (strong, nonatomic) IBOutlet UIImageView *currentImage;
 @property (nonatomic) BOOL isAddPhoto;
 @property (strong, nonatomic) IBOutlet UILabel *greetingsLabel;
-@property (nonatomic, strong) Vkontakte *vkontakte;
 @property (nonatomic, strong) NSDictionary *userInfo;
 @property (nonatomic, strong) GRAlertView *alert;
 @property (nonatomic, strong) MBProgressHUD *hud;
@@ -131,13 +130,12 @@
     if (alertView.cancelButtonIndex == buttonIndex) {
         return;
     }
-    [_vkontakte authenticate];
+    [self.tabBarController setSelectedIndex:1];
 }
 
 #pragma mark -Vkontakte Delegate methods
 - (void)initVkontakte{
-    _vkontakte = [Vkontakte sharedInstance];
-    _vkontakte.delegate = self;
+    DELEGATE.vkontakte.delegate = self;
 }
 
 #pragma mark - Getting photos
@@ -269,8 +267,16 @@ shouldChangeTextInRange:(NSRange)range
 #pragma mark - Send request method
 - (IBAction)sendRequests:(UIButton *)sender {    
     if ([self isDataCorrect]) {
-        if ([_vkontakte isAuthorized]){
-             [self postToVKWall];
+        if ([DELEGATE.vkontakte isAuthorized]){
+            [DELEGATE.vkontakte getUserInfo];
+            BOOL vkFlag =  [[[Settings valueForKey:VK_POST_ON_WALL_KEY] description] boolValue];
+            if (vkFlag) {
+                [self postToVKWall];
+            }
+            else{
+                [self sendGreetingsRequest]; 
+            }
+            
         }
         else{
            _alert = [[GRAlertView alloc] initWithTitle:APP_NAME
@@ -278,35 +284,13 @@ shouldChangeTextInRange:(NSRange)range
                                                delegate:self
                                       cancelButtonTitle:@"Cancel"
                                       otherButtonTitles:@"OK", nil];
-            
-//           /* [_alert setTopColor:[UIColor colorWithRed:0.7 green:0 blue:0 alpha:1]
-//                    middleColor:[UIColor colorWithRed:0.5 green:0 blue:0 alpha:1]
-//                    bottomColor:[UIColor colorWithRed:0.4 green:0 blue:0 alpha:1]
-//                      lineColor:[UIColor colorWithRed:0.7 green:0 blue:0 alpha:1]];
-//            */
-//            alert.style = GRAlertStyleAlert;            // set UIAlertView style
-//            alert.animation = GRAlertAnimationLines;
-//           /* [_alert setFontName:@"Cochin-BoldItalic"
-//                      fontColor:[UIColor greenColor]
-//                fontShadowColor:[UIColor colorWithRed:0.8 green:0 blue:0 alpha:1]];
-//            */
-//            
-//            [alert setImage:@"alert.png"];
-//            [alert show];
-            
             _alert.style = GRAlertStyleInfo;            // set UIAlertView style
-            /*[_alert setTopColor:[UIColor colorWithRed:0.7 green:0 blue:0 alpha:1]
-                   middleColor:[UIColor colorWithRed:0.5 green:0 blue:0 alpha:1]
-                   bottomColor:[UIColor colorWithRed:0.4 green:0 blue:0 alpha:1]
-                     lineColor:[UIColor colorWithRed:0.7 green:0 blue:0 alpha:1]];
-             */
             [_alert setFontName:@"Cochin-BoldItalic"
                      fontColor:[UIColor greenColor]
                fontShadowColor:[UIColor colorWithRed:0.8 green:0 blue:0 alpha:1]];
             _alert.animation = GRAlertAnimationBorder;    // set animation type
             [_alert setImage:@"santa.png"];              // add icon image
             [_alert show];
-
         }
     }
     else{
@@ -393,41 +377,7 @@ shouldChangeTextInRange:(NSRange)range
     self.messageView.text = @"";
 }
 
-
 #pragma mark - VKONTAKTE DELEGATE METHODS
-- (void)vkontakteDidFailedWithError:(NSError *)error
-{
-    [self dismissModalViewControllerAnimated:YES];
-}
-
-- (void)showVkontakteAuthController:(UIViewController *)controller
-{
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-    {
-        controller.modalPresentationStyle = UIModalPresentationFormSheet;
-    }
-    
-    [self presentModalViewController:controller animated:YES];
-}
-
-- (void)vkontakteAuthControllerDidCancelled
-{
-    [self dismissModalViewControllerAnimated:YES];
-}
-
-- (void)vkontakteDidFinishLogin:(Vkontakte *)vkontakte
-{
-    [self dismissModalViewControllerAnimated:YES];
-    [_vkontakte getUserInfo];
-    [self postToVKWall];
-  //  [self refreshButtonState];
-}
-
-- (void)vkontakteDidFinishLogOut:(Vkontakte *)vkontakte
-{
-   // [self refreshButtonState];
-}
-
 - (void)vkontakteDidFinishGettinUserInfo:(NSDictionary *)info
 {
     self.userInfo = info;
@@ -440,7 +390,7 @@ shouldChangeTextInRange:(NSRange)range
 }
 
 - (void)postToVKWall{
-    [_vkontakte postImageToWall:_currentImage.image
+    [DELEGATE.vkontakte postImageToWall:_currentImage.image
                            text:_messageView.text
                            link:[NSURL URLWithString:BASE_URL]];
 }
